@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+	{% block url %}
+		{{url}}
+	{% endblock %}
+
+	{% block from %}
+		Converting From: <span id="input-box" style="font-size: 20px;
+		text-shadow: 1px 0px 2px cyan;">{{input}}</span>
+	{% endblock %}
+
+	{% block to %}
+		Converting to: <span id="output-box" style="font-size: 20px;
+		text-shadow: 1px 0px 2px cyan;">{{to}}</span>
+	{% endblock %}
+
+	{% block amount %}
+		Amount to Convert: <span id="amount-box" style="font-size: 20px;
+		text-shadow: 1px 0px 2px cyan;">{{amount}}</span>
+	{% endblock %}
+
+	{% block button %}
+		<span style="position: absolute;color: cyan;
+		font-size: 25px;text-shadow: 1px 0px 2px rgb(0, 0, 0);
+		margin-top: 10px;">Conversion Result:</span>
+	{% endblock %}
+
+	{% block result %}
+		{{ result }}
+	{% endblock %}
+	
+	{% block return %}
+	<form action="/">
+		<span style="position: absolute;color: rgb(0, 0, 0);font-size: 10px;
+		text-shadow: 1px 0px 2px cyan;margin-top: 60px;">
+		<button type="submit">Return to Conversion </button></span>
+	</form>
+	{% endblock %}
+	

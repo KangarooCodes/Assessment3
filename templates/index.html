@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<link rel='stylesheet' href='static/css/app.css'>
+	<title>Currency Converter</title>
+</head>
+<body>
+	
+	<h1>Use the form below to convert currency!</h1>
+		
+	<form action="/convert">
+		<section id="input">
+			<label for="input">{% block from %}Converting From: </label>
+			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^zxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="input" id="input-box">{% endblock %}
+		</section id="output">
+		<br>
+		<section>
+			<label for="output">{% block to %}Converting To: </label>
+			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^zxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="output" id="output-box">{% endblock %}
+		</section>
+		<br>
+		<section id="amount">
+			<label for="amount">{% block amount %}Amount to Convert: </label>
+			<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="amount" id="amount-box">{% endblock %}
+		</section>
+		<br>
+		<section id="button">
+			{% block button %}<button type="submit">Convert</button>{% endblock %}
+			
+		</section>
+	</form>
+	{% block return %}{% endblock %}
+	<div>
+		<p id="result"> {% block result %} {% endblock %}</p>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="static/js/app.js"></script>
+</body>
+</html>
