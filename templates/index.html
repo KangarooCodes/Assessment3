@@ -12,17 +12,17 @@
 		
 	<form action="/convert">
 		<section id="input">
-			<label for="input">{% block from %}Converting From: </label>
-			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^zxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="input" id="input-box">{% endblock %}
+			<label for="input" id="input-label">{% block from %}Converting From: </label>
+			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="input" id="input-box">{% endblock %}
 		</section id="output">
 		<br>
 		<section>
-			<label for="output">{% block to %}Converting To: </label>
-			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^zxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="output" id="output-box">{% endblock %}
+			<label for="output" id="output-label">{% block to %}Converting To: </label>
+			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="output" id="output-box">{% endblock %}
 		</section>
 		<br>
 		<section id="amount">
-			<label for="amount">{% block amount %}Amount to Convert: </label>
+			<label for="amount"  id="amount-label">{% block amount %}Amount to Convert: </label>
 			<input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="amount" id="amount-box">{% endblock %}
 		</section>
 		<br>
@@ -37,6 +37,5 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-	<script src="static/js/app.js"></script>
 </body>
 </html>

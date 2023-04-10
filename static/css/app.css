@@ -45,9 +45,14 @@ p {
 	justify-content: center;
 	align-items: center;
 }
-#output-box {
-	margin-left: 47px;
+#output-label,#input-label,#amount-label,#button {
+	font-size: 25px;
+	text-shadow: 1px 0px 2px cyan;
 }
-#input-box {
-	margin-left: 18px;
+#button {
+	padding-bottom: 20px;
+}
+#output-box,#input-box,#amount-box {
+	font-size: 18px;
+	text-shadow: 1px 0px 2px rgb(151, 151, 151);
 }
