@@ -1,4 +1,4 @@
-from flask import Flask, redirect, request, jsonify, render_template
+from flask import Flask, request, render_template
 import requests
 from flask_debugtoolbar import DebugToolbarExtension
 
@@ -23,30 +23,29 @@ def home_page():
 def show_conversion():
         
     # Makes sure conversion inputs are UpperCase #
-    input = request.args.get('input')
-    output = request.args.get('output')
-    amount = request.args.get('amount')
+    input = request.form['input']
+    output = request.form['output']
+    amount = request.form['amount']
+    
     
     # Adds user inputs into url for conversion #
-    new_url = url+f"from={input.upper()}"+f"&to={output.upper()}"+f"&amount={amount}"
+    new_url = url+f"from={input}"+f"&to={output}"+f"&amount={amount}"
     
     new_response = requests.get(new_url)
     
     new_data = new_response.json()
-
-    if len(input) is not 3 and len(output) is 3:
-        input = "USD (Default)"
-        new_url = url+f"from=USD"+f"&to={output}"+f"&amount={amount}"
-        new_response = requests.get(new_url)
-        new_data = new_response.json()
-        result_to_str = round(new_data['result'],2)
-        result_str = str(result_to_str)
-        return render_template('base.html',input=input,to=output,
+    if input is not None and output is not None:
+        if len(input) is not 3 or len(output) is not 3:
+            error = "Please Fill In All Boxes"        
+            return render_template('base.html',
+                               error=error, input=input, to=output, amount=amount)
+        elif not amount:
+            error = "Please Fill In All Boxes"        
+            return render_template('base.html',
+                               error=error, input=input, to=output, amount=amount)
+        else:
+            result_to_str = round(new_data['result'],2)
+            result_str = str(result_to_str)
+            return render_template('base.html',input=input,to=output,
                            amount=amount,result=result_str,url=new_url)
-    elif len(output) is 3:
-        result_to_str = round(new_data['result'],2)
-        result_str = str(result_to_str)
-        return render_template('base.html',input=input.upper(),to=output.upper(),
-                           amount=amount,result=result_str,url=new_url)
-    else:
-        return render_template('index.html')
+    return "" #prevents "The view function for 'show_conversion' did not return a valid response."

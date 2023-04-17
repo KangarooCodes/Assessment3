@@ -9,8 +9,9 @@
 <body>
 	
 	<h1>Use the form below to convert currency!</h1>
+	<h5>{% block error %}{% endblock %}</h5>
 		
-	<form action="/convert">
+	<form action="/convert" method="POST">
 		<section id="input">
 			<label for="input" id="input-label">{% block from %}Converting From: </label>
 			<input type="text" maxlength="3" style="text-transform: uppercase" oninput="this.value = this.value.replace(/[^ZXCVBNMASDFGHJKLQWERTYUIOPzxcvbnmasdfghjklqwertyuiop.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="input" id="input-box">{% endblock %}
